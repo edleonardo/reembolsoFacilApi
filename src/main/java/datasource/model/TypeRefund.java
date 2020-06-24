@@ -1,12 +1,21 @@
 package datasource.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity(name= "type_refund")
-public class TypeRefund {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name= "type_refund")
+public class TypeRefund implements Serializable {
     
-    @Id
+	private static final long serialVersionUID = -6602468905173479449L;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String Description;
     

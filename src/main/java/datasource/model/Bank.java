@@ -1,22 +1,25 @@
 package datasource.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Bank {
+@Table
+public class Bank implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -2015380572186345810L;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String Description;
 
-    public Bank(int id, String description) {
-        this.Id = id;
-        this.Description = description;
-    }
-
-    @SuppressWarnings("unused")
-    private Bank() {
+    public Bank() {
     }
 
     public void SetId(int id) {

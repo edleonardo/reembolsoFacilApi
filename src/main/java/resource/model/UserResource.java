@@ -22,9 +22,13 @@ public class UserResource {
     private int Bank;
     @JsonProperty
     private int Approver;
+    @JsonProperty
+    private String Login;
+    @JsonProperty
+    private String Senha;
 
     public UserResource(int id, String fullName, String cpf, int agency, int flagLevel,
-            String account, int department, int bank, int approver) {
+            String account, int department, int bank, int approver, String login, String senha) {
 
         this.Id = id;
         this.FullName = fullName;
@@ -35,6 +39,8 @@ public class UserResource {
         this.Departament = department;
         this.Bank = bank;
         this.Approver = approver;
+        this.Login = login;
+        this.Senha = senha;
     }
 
     public void SetId(int id) {
@@ -108,5 +114,20 @@ public class UserResource {
     public int GetApprover() {
         return this.Approver;
     }
+    
+    public void SetLogin(String login) {
+        this.Login= login;
+    }
 
+    public String GetLogin() {
+        return this.Login;
+    }
+    
+    public void SetSenha(String senha) {
+        this.Senha = senha;
+    }
+
+    public String GetSenha() {
+        return this.Senha;
+    }
 }

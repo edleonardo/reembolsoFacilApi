@@ -1,25 +1,27 @@
 package datasource.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity 
-public class Archive  {
+@Table
+public class Archive implements Serializable {
 
+	private static final long serialVersionUID = 7918248053661729650L;
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Refund;
     private String Archive;
     @SuppressWarnings("unused")
 	private String Data; 
     
-    public Archive(int id, String archive, String data) {
-        this.Refund = id;
-        this.Archive = archive;
-        this.Data = data;
-    }
-    
-    @SuppressWarnings("unused")
-    private Archive() {
+    public Archive() {
     }
 
     public int getRefund() {

@@ -21,10 +21,13 @@ public class RefundResource {
     @JsonProperty
     private String Description;
     @JsonProperty
-    private String FlowPhase;
+    private int Approver;
+    @JsonProperty
+    private String Status;
+
 
     public RefundResource(int id, int type, String justification, double value, int user,
-            String location, String cnpj, String description, String flowphase) {
+            String location, String cnpj, String description, int approver, String status) {
 
         this.Id = id;
         this.Type = type;
@@ -34,7 +37,8 @@ public class RefundResource {
         this.Location = location;
         this.Cnpj = cnpj;
         this.Description = description;
-        this.FlowPhase = flowphase;
+        this.Approver = approver;
+        this.Status = status;
     }
 
     public void SetId(int id) {
@@ -101,12 +105,20 @@ public class RefundResource {
         return this.Description;
     }
 
-    public void SetFlowPhase(String flowPhase) {
-        this.FlowPhase = flowPhase;
+    public void SetApprover (int approver) {
+        this.Approver = approver;
     }
 
-    public String GetFlowPhase() {
-        return this.FlowPhase;
+    public int GetApprover () {
+        return this.Approver;
+    }
+    
+    public void SetStatus(String status) {
+        this.Status = status;
+    }
+
+    public String GetStatus() {
+        return this.Status;
     }
 
 }

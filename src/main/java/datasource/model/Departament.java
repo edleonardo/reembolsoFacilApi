@@ -1,22 +1,25 @@
 package datasource.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Departament {
+@Table
+public class Departament implements Serializable  {
 
-    @Id
+	private static final long serialVersionUID = 3150600688648230581L;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String Description;
         
-    public Departament(int id, String description) {
-        this.Id = id;
-        this.Description = description;
-    }
-    
-    @SuppressWarnings("unused")
-    private Departament() {
+    public Departament() {
     }
 
     public void SetId(int id) {

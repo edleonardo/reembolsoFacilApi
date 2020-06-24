@@ -1,13 +1,22 @@
 package datasource.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "users")
-public class User {
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = -1382904967579359990L;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     @Column(name = "full_name")
     private String FullName;
@@ -18,23 +27,10 @@ public class User {
     private int Departament;
     private int Bank;
     private int Approver;
+    private String Login;
+    private String Senha;
 
-    public User(int id, String fullName, String cpf, int agency, int flagLevel,
-            String account, int department, int bank, int approver) {
-
-        this.Id = id;
-        this.FullName = fullName;
-        this.Cpf = cpf;
-        this.Agency = agency;
-        this.FlagLevel = flagLevel;
-        this.Account = account;
-        this.Departament = department;
-        this.Bank = bank;
-        this.Approver = approver;
-    }
-
-    @SuppressWarnings("unused")
-    private User() {
+    public User() {
     }
 
     public void SetId(int id) {
@@ -107,5 +103,21 @@ public class User {
 
     public int GetApprover() {
         return this.Approver;
+    }
+    
+    public void SetLogin(String login) {
+        this.Login= login;
+    }
+
+    public String GetLogin() {
+        return this.Login;
+    }
+    
+    public void SetSenha(String senha) {
+        this.Senha = senha;
+    }
+
+    public String GetSenha() {
+        return this.Senha;
     }
 }

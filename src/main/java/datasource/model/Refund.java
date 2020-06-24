@@ -1,13 +1,22 @@
 package datasource.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "refund")
-public class Refund {
+@Entity
+@Table(name = "refund")
+public class Refund implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 7090520749054178080L;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private int Type;
     private String Justification;
@@ -16,25 +25,11 @@ public class Refund {
     private String Location;
     private String Cnpj;
     private String Description;
+    private String Status;
     @Column(name = "flow_phase")
     private String FlowPhase;
 
-    public Refund(int id, int type, String justification, double value, int user,
-            String location, String cnpj, String description, String flowphase) {
-
-        this.Id = id;
-        this.Type = type;
-        this.Justification = justification;
-        this.Value = value;
-        this.User = user;
-        this.Location = location;
-        this.Cnpj = cnpj;
-        this.Description = description;
-        this.FlowPhase = flowphase;
-    }
-
-    @SuppressWarnings("unused")
-    private Refund() {
+    public Refund() {
     }
 
     public void SetId(int id) {
@@ -107,6 +102,15 @@ public class Refund {
 
     public String GetFlowPhase() {
         return this.FlowPhase;
+    }
+    
+
+    public void SetStatus(String status) {
+        this.Status = status;
+    }
+
+    public String GetStatus() {
+        return this.Status;
     }
 
 }

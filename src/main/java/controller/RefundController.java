@@ -1,6 +1,7 @@
 package controller;
 
 import datasource.model.Refund;
+import exception.RefundNotFoundException;
 import services.RefundServices;
 
 import java.util.List;
@@ -15,29 +16,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/refund")
+@RequestMapping(value = "/Refund")
 public class RefundController {
 
 	@Autowired
 	private RefundServices refundService;
 
-	@GetMapping(path = "show/{id}")
-	public Refund findRefundById(@PathVariable(name = "id", required = true) Long id) {
+	@GetMapping(path = "/Show/{id}")
+	public Refund findRefundById(@PathVariable(name = "id", required = true) Long id) throws RefundNotFoundException {
 		return refundService.findById(id);
 	}
 
-	@GetMapping(path = "/all")
-	public List<Refund> listAllRefunds() {
-		return refundService.findAllRefunds();
+	@GetMapping(path = "/List/{id}")
+	public List<Refund> listByUser(@PathVariable(name = "user", required = true) Long user)
+			throws RefundNotFoundException {
+		return refundService.findByUser(user);
 	}
 
-	@PostMapping(path = "/save")
+	@PostMapping(path = "/Create")
 	public void salvarNutricionista(@RequestBody Refund refund) {
 		refundService.create(refund);
 	}
 
-	@DeleteMapping(path = "/delete/{id}")
-	public void delete(@PathVariable(name = "id", required = true) Long id) {
+	@DeleteMapping(path = "/Delete/{id}")
+	public void delete(@PathVariable(name = "id", required = true) Long id) throws RefundNotFoundException {
 		refundService.delete(id);
 	}
 }
