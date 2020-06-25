@@ -113,7 +113,6 @@ public class Refund implements Serializable {
         return this.FlowPhase;
     }
     
-
     public void SetStatus(int status) {
         this.Status = status;
     }

@@ -6,9 +6,9 @@ public class UserResource {
 
     @JsonProperty
     private int Id;
-    @JsonProperty
+    @JsonProperty("full_name")
     private String FullName;
-    @JsonProperty
+    @JsonProperty("CPF")
     private String Cpf;
     @JsonProperty
     private int Agency;
@@ -20,7 +20,7 @@ public class UserResource {
     private int Departament;
     @JsonProperty
     private int Bank;
-    @JsonProperty
+    @JsonProperty("approver")
     private int Approver;
     @JsonProperty
     private String Login;
