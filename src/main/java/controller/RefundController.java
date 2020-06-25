@@ -32,6 +32,11 @@ public class RefundController {
 			throws RefundNotFoundException {
 		return refundService.findByUser(user);
 	}
+	
+	@GetMapping(path = "/ok")
+	public String ok() {
+		return "ok";
+	}
 
 	@PostMapping(path = "/Create")
 	public void salvarNutricionista(@RequestBody Refund refund) {

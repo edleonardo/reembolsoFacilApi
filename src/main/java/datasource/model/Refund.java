@@ -18,16 +18,25 @@ public class Refund implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
+	@Column(name = "type_refund")
     private int Type;
     private String Justification;
+	@Column(name = "value")
     private double Value;
+	@Column(name = "user")
     private int User;
+	@Column(name = "location")
     private String Location;
+	@Column(name = "CNPJ")
     private String Cnpj;
+	@Column(name = "description")
     private String Description;
-    private String Status;
+	@Column(name = "status")
+    private int Status;
     @Column(name = "flow_phase")
     private String FlowPhase;
+    @Column(name = "approver")
+    private String Approver;
 
     public Refund() {
     }
@@ -105,12 +114,20 @@ public class Refund implements Serializable {
     }
     
 
-    public void SetStatus(String status) {
+    public void SetStatus(int status) {
         this.Status = status;
     }
 
-    public String GetStatus() {
+    public int GetStatus() {
         return this.Status;
+    }
+    
+    public void SetApprover(String approver) {
+        this.Approver = approver;
+    }
+
+    public String GetApprover() {
+        return this.Approver;
     }
 
 }
