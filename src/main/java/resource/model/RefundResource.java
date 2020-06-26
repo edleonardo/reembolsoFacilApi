@@ -1,124 +1,122 @@
 package resource.model;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RefundResource {
+public class RefundResource implements Serializable {
 
-    @JsonProperty
-    private int Id;
-    @JsonProperty
-    private int Type;
-    @JsonProperty
-    private String Justification;
-    @JsonProperty
-    private double Value;
-    @JsonProperty
-    private int User;
-    @JsonProperty
-    private String Location;
-    @JsonProperty
-    private String Cnpj;
-    @JsonProperty
-    private String Description;
-    @JsonProperty
-    private int Approver;
-    @JsonProperty
-    private String Status;
+	private static final long serialVersionUID = -4129600916549432968L;
 
+	@JsonProperty
+	private int Id;
+	@JsonProperty("type_refund")
+	private int Type;
+	@JsonProperty("justification")
+	private String Justification;
+	@JsonProperty("value")
+	private double Value;
+	@JsonProperty("user")
+	private int User;
+	@JsonProperty("location")
+	private String Location;
+	@JsonProperty("CNPJ")
+	private String Cnpj;
+	@JsonProperty("description")
+	private String Description;
+	@JsonProperty("approver")
+	private int Approver;
+	@JsonProperty("flow_phase")
+	private String FlowPhase;
+	@JsonProperty("status")
+	private String Status;
 
-    public RefundResource(int id, int type, String justification, double value, int user,
-            String location, String cnpj, String description, int approver, String status) {
+	public void SetId(int id) {
+		this.Id = id;
+	}
 
-        this.Id = id;
-        this.Type = type;
-        this.Justification = justification;
-        this.Value = value;
-        this.User = user;
-        this.Location = location;
-        this.Cnpj = cnpj;
-        this.Description = description;
-        this.Approver = approver;
-        this.Status = status;
-    }
+	public int GetId() {
+		return this.Id;
+	}
 
-    public void SetId(int id) {
-        this.Id = id;
-    }
+	public void SetType(int type) {
+		this.Type = type;
+	}
 
-    public int GetId() {
-        return this.Id;
-    }
+	public int GetType() {
+		return this.Type;
+	}
 
-    public void SetType(int type) {
-        this.Type = type;
-    }
+	public void SetJustification(String justification) {
+		this.Justification = justification;
+	}
 
-    public int GetType() {
-        return this.Type;
-    }
+	public String GetJustification() {
+		return this.Justification;
+	}
 
-    public void SetJustification(String justification) {
-        this.Justification = justification;
-    }
+	public void SetValue(double value) {
+		this.Value = value;
+	}
 
-    public String GetJustification() {
-        return this.Justification;
-    }
+	public double GetValue() {
+		return this.Value;
+	}
 
-    public void SetValue(double value) {
-        this.Value = value;
-    }
+	public void SetUser(int user) {
+		this.User = user;
+	}
 
-    public double GetValue() {
-        return this.Value;
-    }
+	public int GetUser() {
+		return this.User;
+	}
 
-    public void SetUser(int user) {
-        this.User = user;
-    }
+	public void SetLocation(String location) {
+		this.Location = location;
+	}
 
-    public int GetUser() {
-        return this.User;
-    }
+	public String GetLocation() {
+		return this.Location;
+	}
 
-    public void SetLocation(String location) {
-        this.Location = location;
-    }
+	public void SetCnpj(String cnpj) {
+		this.Cnpj = cnpj;
+	}
 
-    public String GetLocation() {
-        return this.Location;
-    }
+	public String GetCnpj() {
+		return this.Cnpj;
+	}
 
-    public void SetCnpj(String cnpj) {
-        this.Cnpj = cnpj;
-    }
+	public void SetDescription(String description) {
+		this.Description = description;
+	}
 
-    public String GetCnpj() {
-        return this.Cnpj;
-    }
+	public String GetDescription() {
+		return this.Description;
+	}
 
-    public void SetDescription(String description) {
-        this.Description = description;
-    }
+	public void SetApprover(int approver) {
+		this.Approver = approver;
+	}
 
-    public String GetDescription() {
-        return this.Description;
-    }
+	public int GetApprover() {
+		return this.Approver;
+	}
 
-    public void SetApprover (int approver) {
-        this.Approver = approver;
-    }
+	public void SetStatus(String status) {
+		this.Status = status;
+	}
 
-    public int GetApprover () {
-        return this.Approver;
-    }
-    
-    public void SetStatus(String status) {
-        this.Status = status;
-    }
+	public String GetStatus() {
+		return this.Status;
+	}
 
-    public String GetStatus() {
-        return this.Status;
-    }
+	public void SetFlowPhase(String flowPhase) {
+		this.FlowPhase = flowPhase;
+	}
+
+	public String GetFlowPhase() {
+		return this.FlowPhase;
+	}
 
 }

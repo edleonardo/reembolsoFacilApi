@@ -20,12 +20,14 @@ public class User implements Serializable {
     private int Id;
     @Column(name = "full_name")
     private String FullName;
+    @Column(name = "CPF")
     private String Cpf;
     private int Agency;
     private int FlagLevel;
     private String Account;
     private int Departament;
     private int Bank;
+    @Column(name = "approver")
     private int Approver;
     private String Login;
     private String Senha;
