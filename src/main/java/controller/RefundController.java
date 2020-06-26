@@ -51,7 +51,7 @@ public class RefundController {
 	}
 	
 	@PostMapping(path = "/Create")
-	public void salvarNutricionista(@RequestBody Refund refund) {
+	public void create(@RequestBody Refund refund) {
 		refundService.create(refund);
 	}
 
