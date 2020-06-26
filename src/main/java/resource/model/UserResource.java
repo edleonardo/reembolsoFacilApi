@@ -42,7 +42,7 @@ public class UserResource {
         this.Login = login;
         this.Senha = senha;
     }
-
+    public UserResource() {}
     public void SetId(int id) {
         this.Id = id;
     }
@@ -51,11 +51,11 @@ public class UserResource {
         return this.Id;
     }
 
-    public void GetFullName(String fullName) {
+    public void SetFullName(String fullName) {
         this.FullName = fullName;
     }
-
-    public String SetFullName() {
+  
+    public String GetFullName() {
         return this.FullName;
     }
 

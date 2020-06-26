@@ -19,7 +19,7 @@ public class RefundServices {
 
 	public void create(Refund refund) {
 		
-		refund.SetStatus(1);
+	
 		refundRepository.saveAndFlush(refund);
 	}
 
@@ -54,7 +54,7 @@ public class RefundServices {
 			throw new RefundNotFoundException("Refund not found by ID:" + id);
 		} else {
 			refund = optionalRefund.get();
-			refund.SetStatus(status);
+		
 			refundRepository.saveAndFlush(refund);
 		}
 
