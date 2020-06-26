@@ -18,8 +18,6 @@ public class RefundServices {
 	private RefundRepository refundRepository;
 
 	public void create(Refund refund) {
-		
-	
 		refundRepository.saveAndFlush(refund);
 	}
 
@@ -45,7 +43,7 @@ public class RefundServices {
 
 		return refund;
 	}
-	
+
 	public Refund update(Long id, int status) throws RefundNotFoundException {
 		Optional<Refund> optionalRefund = getOptional(id);
 		Refund refund = null;
@@ -60,7 +58,7 @@ public class RefundServices {
 
 		return refund;
 	}
-	
+
 	private Optional<Refund> getOptional(Long id) {
 		return refundRepository.findById(id);
 	}
@@ -74,8 +72,14 @@ public class RefundServices {
 			refundRepository.delete(optionalRefund.get());
 		}
 	}
-	
-	
-	
-	
+
+	public List<Refund> listFinishOrApprove() throws RefundNotFoundException {
+		List<Refund> refundList = refundRepository.listFinishOrApproveRefund();
+
+		if (refundList.isEmpty()) {
+			throw new RefundNotFoundException("Error has occurred");
+		} else {
+			return refundList;
+		}
+	}
 }
