@@ -7,6 +7,8 @@ import services.RefundServices;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,21 +31,36 @@ public class RefundController {
 		return refundService.findById(id);
 	}
 
-	@GetMapping(path = "/List/{id}")
-	public List<Refund> listByUser(@PathVariable(name = "user", required = true) Long user)
+	@GetMapping(path = "/List/{user}")
+	@ResponseBody
+	public ResponseEntity<?> listByUser(@PathVariable(name = "user", required = true) Long user)
 			throws RefundNotFoundException {
-		return refundService.findByUser(user);
+		List<Refund> teste = refundService.findByUser(user);
+		return new ResponseEntity<>(refundService.findByUser(user),HttpStatus.OK);
+	
 	}
+	
 	
 	@GetMapping(path = "/FinishOrApprove")
-	public List<Refund> listFinishOrApprove() throws RefundNotFoundException {
-		return refundService.listFinishOrApprove();
+	@ResponseBody
+	public ResponseEntity<?>  listFinishOrApprove() throws RefundNotFoundException {
+		return new ResponseEntity<>(refundService.listFinishOrApprove(),HttpStatus.OK);
 	}
 	
 	
+	@GetMapping(path = "/ListApprover/{user}")
+	@ResponseBody
+	public ResponseEntity<?> ListApprover(@PathVariable(name = "user", required = true) Long user)
+			throws RefundNotFoundException {
+		
+		return new ResponseEntity<>(refundService.findByApprover(user),HttpStatus.OK);
+	
+	}
+	
 	@PutMapping(path = "/Approve/{id}")
-	public Refund approve(@PathVariable(name = "id", required = true) Long id) throws RefundNotFoundException {
-		return refundService.update(id, 2);
+	public ResponseEntity<?> approve(@PathVariable(name = "id", required = true) Long id) throws RefundNotFoundException {
+		
+		return new ResponseEntity<>(refundService.update(id, 2),HttpStatus.OK);
 	}
 
 	@PutMapping(path = "/Finish/{id}")

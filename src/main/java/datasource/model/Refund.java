@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -22,28 +23,38 @@ import lombok.NoArgsConstructor;
 public class Refund implements Serializable {
 
 	private static final long serialVersionUID = 7090520749054178080L;
-	
+
 	@Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int Id;
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long Id;
+
 	@Column(name = "type_refund")
-  private int Type;
-  private String Justification;
+	private int type_refund;
+
+	private String Justification;
 	@Column(name = "value")
-  private double Value;
-	@Column(name = "user")
-  private int user;
+	private double Value;
+
+	@Column(name = "users")
+	private long users;
+
 	@Column(name = "location")
-  private String Location;
+	private String Location;
+
 	@Column(name = "CNPJ")
-  private String Cnpj;
+	private String Cnpj;
+
 	@Column(name = "description")
-  private String Description;
+	private String Description;
+
 	@Column(name = "status")
-  private int Status;
-  @Column(name = "flow_phase")
-  private String FlowPhase;
-  @Column(name = "approver")
-  private String Approver;
+	private int Status;
+
+	@Column(name = "flow_phase")
+	private String FlowPhase;
+
+	@Column(name = "approver")
+	private long Approver;
 
 }

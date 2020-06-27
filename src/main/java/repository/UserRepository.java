@@ -11,4 +11,7 @@ import datasource.model.User;
 public interface UserRepository extends JpaRepository<User, Long>{
 	@Query("SELECT u FROM User u where u.Login = ?1 and u.Senha = ?2")
 	Optional<User> authenticate(String login, String senha);
+	
+	@Query("SELECT u FROM User u where u.Login = ?1 and u.Senha = ?2")
+	Optional<User> Menu(Long id);
 }

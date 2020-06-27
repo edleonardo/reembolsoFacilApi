@@ -25,12 +25,20 @@ public class RefundServices {
 		List<Refund> refundList = refundRepository.findByUser(user);
 
 		if (refundList.isEmpty()) {
-			throw new RefundNotFoundException("Error has occurred");
+			return null;
 		} else {
 			return refundList;
 		}
 	}
+	public List<Refund> findByApprover(Long user) throws RefundNotFoundException {
+		List<Refund> refundList = refundRepository.findByApprover(user);
 
+		if (refundList.isEmpty()) {
+			return null;
+		} else {
+			return refundList;
+		}
+	}
 	public Refund findById(Long id) throws RefundNotFoundException {
 		Optional<Refund> optionalRefund = getOptional(id);
 		Refund refund = null;
@@ -53,6 +61,7 @@ public class RefundServices {
 		} else {
 			refund = optionalRefund.get();
 		
+			refund.setStatus(status);
 			refundRepository.saveAndFlush(refund);
 		}
 
@@ -74,10 +83,10 @@ public class RefundServices {
 	}
 
 	public List<Refund> listFinishOrApprove() throws RefundNotFoundException {
+		
 		List<Refund> refundList = refundRepository.listFinishOrApproveRefund();
-
 		if (refundList.isEmpty()) {
-			throw new RefundNotFoundException("Error has occurred");
+			return null;
 		} else {
 			return refundList;
 		}

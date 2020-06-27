@@ -9,9 +9,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.reembolsoFacil.api.config.BasicConfiguration;
 
+import controller.BankController;
+import controller.DepartamentApproverController;
+import controller.DepartamentController;
 import controller.RefundController;
+import controller.TypeRefundController;
 import controller.UserController;
+import services.BankService;
+import services.DepartamentApproverService;
+import services.DepartamentService;
 import services.RefundServices;
+import services.TypeRefundService;
 import services.UserServices;
 
 
@@ -20,7 +28,7 @@ import services.UserServices;
      {"repository",
      })
 @EntityScan("datasource.model")
-@ComponentScan(basePackageClasses = {RefundController.class , UserController.class , RefundServices.class ,BasicConfiguration.class, UserServices.class})
+@ComponentScan(basePackageClasses = {TypeRefundController.class, DepartamentApproverController.class, BankController.class, DepartamentController.class, RefundController.class , UserController.class ,DepartamentApproverService.class, RefundServices.class ,BankService.class, DepartamentService.class,TypeRefundService.class, BasicConfiguration.class, UserServices.class})
 
 public class ApiApplication {
 

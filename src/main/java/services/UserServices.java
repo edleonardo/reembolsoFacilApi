@@ -33,13 +33,24 @@ public class UserServices {
 		}
 		return user;
 	}
-
+	public User Menu(Long id) throws UserNotFoundException {
+		Optional<User> optionalUser = userRepository.Menu(id);
+		User user = null;
+		
+		if (!optionalUser.isPresent()) {
+			return null;
+		} else {
+			user = optionalUser.get();
+		}
+		
+		return user;		
+	}
 	public User authenticate(String login, String senha) throws UserNotFoundException {
 		Optional<User> optionalUser = userRepository.authenticate(login, senha);
 		User user = null;
 		
 		if (!optionalUser.isPresent()) {
-			throw new UserNotFoundException("Access Denied");
+			return null;
 		} else {
 			user = optionalUser.get();
 		}

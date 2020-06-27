@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import datasource.model.Refund;
 import datasource.model.User;
 import exception.UserNotFoundException;
 import resource.model.UserResource;
@@ -33,21 +34,28 @@ public class UserController {
 		return new ResponseEntity<>(user,HttpStatus.OK);
 
 	}
+	@GetMapping(path = "/Menu/{id}")
+	@ResponseBody
+	public ResponseEntity<?> Menu(@PathVariable(name = "id", required = true) Long id) throws UserNotFoundException {
+        User user = userService.findById(id);
+		return new ResponseEntity<>(user,HttpStatus.OK);
 
+	}
 	@GetMapping(path = "/All")
-	public List<User> listAllRefunds() {
-		return userService.findAllRefunds();
+	public ResponseEntity<?> listAllRefunds() {
+		return new ResponseEntity<>( userService.findAllRefunds(),HttpStatus.OK);
+		
 	}
 
-	@GetMapping(path = "/Authenticate")
+	@GetMapping(path = "/Authenticate/{Login}/{Senha}")
 	@ResponseBody
-	public ResponseEntity<?> authenticate( String Login, String Senha) throws UserNotFoundException {
+	public ResponseEntity<?> authenticate( @PathVariable(name = "Login", required = true) String Login, @PathVariable(name = "Senha", required = true) String Senha) throws UserNotFoundException {
 		return new ResponseEntity<>(userService.authenticate(Login, Senha),HttpStatus.OK);
 
 	}
 
 	@PostMapping(path = "/Create")
-	public void salvarNutricionista(@RequestBody User user) {
+	public void create(@RequestBody User user) {
 		userService.create(user);
 	}
 
